@@ -1,5 +1,3 @@
-# esi-vue-crud
-
 ## Project setup
 
 ```
@@ -11,4 +9,5 @@ npm install
 ```
 npm run serve
 ```
+
 # wearhouse_frontend
