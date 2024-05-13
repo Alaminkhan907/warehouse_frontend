@@ -59,6 +59,15 @@ export default {
     },
     deleteFunction(customerId) {
       console.log("Delete Call on", customerId);
+      fetch(`http://localhost:8082/api/customers/${customerId}`, {
+        method: "DELETE",
+      })
+        .then(() => {
+          this.fetchCustomers();
+        })
+        .catch((error) => {
+          console.error("Error deleting customer:", error);
+        });
     },
     redirectToAddCustomer() {
       this.$router.push({ name: "AddCustomer" });

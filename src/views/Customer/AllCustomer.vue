@@ -2,6 +2,7 @@
   <div>
     <div>
       <ul>
+        <li>Id:{{ customer.id }}</li>
         <li>Name: {{ customer.fullName }}</li>
         <li>Name: {{ customer.email }}</li>
         <li>Name: {{ customer.phoneNo }}</li>
