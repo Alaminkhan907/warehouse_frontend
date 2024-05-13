@@ -10,8 +10,7 @@
       <input type="number" v-model="editedOrder.quantity" />
       <label>Price:</label>
       <input type="number" v-model="editedOrder.price" step="0.01" />
-      <label>Order Date:</label>
-      <input type="datetime-local" v-model="editedOrder.orderDate" />
+
       <label>Order Status:</label>
       <select v-model="editedOrder.orderStatus">
         <option value="CREATED">Created</option>

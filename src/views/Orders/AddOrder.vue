@@ -6,12 +6,20 @@
       <input type="text" v-model="newOrder.customerId" />
       <label>Inventory ID:</label>
       <input type="text" v-model="newOrder.inventoryId" />
-      <label>Quantity:</label>
-      <input type="number" v-model="newOrder.quantity" />
       <label>Price:</label>
       <input type="number" v-model="newOrder.price" step="0.01" />
-      <label>Order Date:</label>
-      <input type="datetime-local" v-model="newOrder.orderDate" />
+      <label>Order Status:</label>
+      <select v-model="newOrder.orderStatus">
+        <option value="CREATED">Created</option>
+        <option value="SHIPPED">Shipped</option>
+        <option value="DELIVERED">Delivered</option>
+      </select>
+      <label>Shipment Status:</label>
+      <select v-model="newOrder.shipmentStatus">
+        <option value="CREATED">Created</option>
+        <option value="IN_TRANSIT">In Transit</option>
+        <option value="DELIVERED">Delivered</option>
+      </select>
       <button class="btn btn-blue" type="submit">Add Order</button>
     </form>
   </div>
