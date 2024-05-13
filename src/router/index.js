@@ -21,7 +21,7 @@ const routes = [
   {
     path: "/order",
     name: "Order",
-    component: () => import("../views/OrderView.vue"),
+    component: () => import("../views/Orders/OrderView.vue"),
   },
   {
     path: "/customer",
@@ -57,6 +57,21 @@ const routes = [
     path: "/addcustomer",
     name: "AddCustomer",
     component: () => import("../views/Customer/AddCustomer.vue"),
+  },
+  {
+    path: "/allorder",
+    name: "AllOrder",
+    component: () => import("../views/Orders/AllOrder.vue"),
+  },
+  {
+    path: "/editorder/:id",
+    name: "EditOrder",
+    component: () => import("../views/Orders/EditOrder.vue"),
+  },
+  {
+    path: "/addorder",
+    name: "AddOrder",
+    component: () => import("../views/Orders/AddOrder.vue"),
   },
 ];
 
