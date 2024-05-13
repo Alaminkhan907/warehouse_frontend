@@ -30,11 +30,12 @@ export default {
         { name: "Shipment", icon: "bxs-trophy", href: "/Shipment" },
         { name: "Supplier", icon: "bxs-star", href: "/supplier" },
         { name: "Notification", icon: "bxs-star", href: "/notification" },
+        { name: "All Customer", icon: "bxs-star", href: "/allcustomer" },
         {
           isFooter: true,
           tooltip: "Vue.js LinkedIn page",
           icon: "bxl-linkedin",
-          href: "https://www.linkedin.com/company/vuejsdevelopers",
+          href: "https://www.linkedin.com/in/alamin-khan-907",
         },
       ],
     };
