@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     addCustomer() {
-      fetch("http://localhost:8082/api/customers", {
+      fetch("http://localhost:8080/api/customers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
