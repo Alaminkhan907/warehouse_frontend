@@ -1,6 +1,5 @@
 <template>
   <sidebar-menu :items="items" />
-
   <div class="container">
     <router-view />
   </div>

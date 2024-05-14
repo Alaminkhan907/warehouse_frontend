@@ -1,11 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+
+import auth from "../auth";
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "Home",
+    component: () => import("../views/Auth/HomeView.vue"),
+    beforeEnter: async (to, from, next) => {
+      let authResult = await auth.authenticated();
+      if (!authResult) {
+        next("/login");
+      } else {
+        next();
+      }
+    },
   },
 
   {
@@ -72,6 +81,21 @@ const routes = [
     path: "/addorder",
     name: "AddOrder",
     component: () => import("../views/Orders/AddOrder.vue"),
+  },
+  {
+    path: "/signup",
+    name: "SignUp",
+    component: () => import("../views/Auth/SignUp.vue"),
+  },
+  {
+    path: "/login",
+    name: "LogIn",
+    component: () => import("../views/Auth/LogIn.vue"),
+  },
+  {
+    path: "/aboutview",
+    name: "AboutView",
+    component: () => import("../views/Auth/AboutView.vue"),
   },
 ];
 
