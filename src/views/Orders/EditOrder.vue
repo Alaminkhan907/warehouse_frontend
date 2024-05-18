@@ -1,29 +1,42 @@
 <template>
   <div>
-    <h1>Edit Order</h1>
-    <form @submit.prevent="updateOrder">
-      <label>Customer ID:</label>
-      <input type="text" v-model="editedOrder.customerId" />
-      <label>Inventory ID:</label>
-      <input type="text" v-model="editedOrder.inventoryId" />
-      <label>Quantity:</label>
-      <input type="number" v-model="editedOrder.quantity" />
-      <label>Price:</label>
-      <input type="number" v-model="editedOrder.price" step="0.01" />
-
-      <label>Order Status:</label>
-      <select v-model="editedOrder.orderStatus">
-        <option value="CREATED">Created</option>
-        <option value="SHIPPED">Shipped</option>
-        <option value="DELIVERED">Delivered</option>
-      </select>
-      <label>Shipment Status:</label>
-      <select v-model="editedOrder.shipmentStatus">
-        <option value="CREATED">Created</option>
-        <option value="IN_TRANSIT">In Transit</option>
-        <option value="DELIVERED">Delivered</option>
-      </select>
-      <button class="btn btn-blue" type="submit">Save Changes</button>
+    <h1 class="header">Edit Order</h1>
+    <form @submit.prevent="updateOrder" class="form-container">
+      <div class="input-container">
+        <label>Customer ID:</label>
+        <input type="text" v-model="editedOrder.customerId" />
+      </div>
+      <div class="input-container">
+        <label>Inventory ID:</label>
+        <input type="text" v-model="editedOrder.inventoryId" />
+      </div>
+      <div class="input-container">
+        <label>Quantity:</label>
+        <input type="number" v-model="editedOrder.quantity" />
+      </div>
+      <div class="input-container">
+        <label>Price:</label>
+        <input type="number" v-model="editedOrder.price" step="0.01" />
+      </div>
+      <div class="input-container">
+        <label>Order Status:</label>
+        <select v-model="editedOrder.orderStatus">
+          <option value="CREATED">Created</option>
+          <option value="SHIPPED">Shipped</option>
+          <option value="DELIVERED">Delivered</option>
+        </select>
+      </div>
+      <div class="input-container">
+        <label>Shipment Status:</label>
+        <select v-model="editedOrder.shipmentStatus">
+          <option value="CREATED">Created</option>
+          <option value="IN_TRANSIT">In Transit</option>
+          <option value="DELIVERED">Delivered</option>
+        </select>
+      </div>
+      <div class="button-container">
+        <button class="btn btn-blue" type="submit">Save Changes</button>
+      </div>
     </form>
   </div>
 </template>
@@ -37,8 +50,7 @@ export default {
         inventoryId: "",
         quantity: "",
         price: "",
-        orderDate: "",
-        orderStatus: "",
+        orderStatus: "CREATED",
         shipmentStatus: "CREATED",
       },
     };
@@ -93,7 +105,64 @@ export default {
 </script>
 
 <style scoped>
-.btn-blue {
-  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full;
+.header {
+  padding: 40px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+  margin-bottom: 2%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+.input-container label {
+  margin-bottom: 5px;
+}
+
+.input-container input,
+.input-container select {
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.btn.btn-blue {
+  padding: 15px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn.btn-blue:hover {
+  background-color: #2980b9;
 }
 </style>

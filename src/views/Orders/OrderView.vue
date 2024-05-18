@@ -1,9 +1,18 @@
 <template>
   <div>
-    <h1>Orders</h1>
-    <button @click="redirectToCreateOrder">Create Order</button>
-    <input type="text" v-model="searchId" placeholder="Search by Order ID" />
-    <button @click="searchOrder">Search</button>
+    <h1 class="header">Orders</h1>
+    <div class="controls">
+      <button class="btn add-btn" @click="redirectToCreateOrder">
+        Create Order
+      </button>
+      <input
+        type="text"
+        v-model="searchId"
+        placeholder="Search by Order ID"
+        class="search-input"
+      />
+      <button class="btn search-btn" @click="searchOrder">Search</button>
+    </div>
     <div v-if="searchResult">
       <h2>Search Result</h2>
       <AllOrder :order="searchResult" @edit="editOrder" @delete="deleteOrder" />
@@ -12,7 +21,7 @@
       <p>No order found with ID: {{ searchId }}</p>
     </div>
     <div v-else>
-      <p>This is all orders</p>
+      <p class="subheading">This is all orders</p>
       <div>
         <AllOrder
           v-for="order in orders"
@@ -50,7 +59,7 @@ export default {
         .catch((err) => console.log(err.message));
     },
     editOrder(orderId) {
-      console.log("Order call from child receive on parent", orderId);
+      console.log("Order call from child received on parent", orderId);
       this.$router.push({ name: "EditOrder", params: { id: orderId } });
     },
     deleteOrder(orderId) {
@@ -101,4 +110,76 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.header {
+  padding: 40px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+.subheading {
+  text-align: center;
+  font-size: 20px;
+  margin: 2em;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  width: 200px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.add-btn {
+  background-color: #3498db;
+  color: white;
+  margin-right: 10px;
+}
+
+.add-btn:hover {
+  background-color: #2980b9;
+}
+
+.search-btn {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.search-btn:hover {
+  background-color: #27ae60;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+p {
+  text-align: center;
+  color: #999;
+}
+
+div[v-cloak] {
+  display: none;
+}
+</style>
