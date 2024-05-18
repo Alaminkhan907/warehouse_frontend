@@ -20,13 +20,24 @@ const routes = [
   {
     path: "/analytics",
     name: "Analytics",
-    component: () => import("../views/AnalyticsView.vue"),
+    component: () => import("../views/Analytics/AnalyticsView.vue"),
   },
   {
     path: "/inventory",
     name: "Inventory",
-    component: () => import("../views/InventoryView.vue"),
+    component: () => import("../views/Inventory/InventoryView.vue"),
   },
+  {
+    path: "/AddInventory",
+    name: "AddInventory",
+    component: () => import("../views/Inventory/AddInventory.vue"),
+  },
+  {
+    path: "/editInventory/:id",
+    name: "EditInventory",
+    component: () => import("../views/Inventory/editInventory.vue"),
+  },
+
   {
     path: "/order",
     name: "Order",
@@ -40,17 +51,17 @@ const routes = [
   {
     path: "/shipment",
     name: "Shipment",
-    component: () => import("../views/ShipmentView.vue"),
+    component: () => import("../views/Shipment/ShipmentView.vue"),
   },
   {
     path: "/supplier",
     name: "Supplier",
-    component: () => import("../views/SupplierView.vue"),
+    component: () => import("../views/Supplier/SupplierView.vue"),
   },
   {
     path: "/notification",
     name: "Notification",
-    component: () => import("../views/NotificationView.vue"),
+    component: () => import("../views/Notification/NotificationView.vue"),
   },
   {
     path: "/allcustomer",
