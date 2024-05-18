@@ -12,6 +12,11 @@
           <input type="password" name="password" required v-model="password" />
         </div>
         <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" required v-model="email" />
+        </div>
+
+        <div class="input-group">
           <label for="roles">Role</label>
           <input type="text" name="roles" required v-model="roles" />
         </div>
@@ -42,6 +47,7 @@ export default {
       var data = {
         name: this.username,
         password: this.password,
+        email: this.email,
         roles: this.roles,
       };
 
