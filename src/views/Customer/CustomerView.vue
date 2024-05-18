@@ -1,9 +1,18 @@
 <template>
   <div>
-    <h1>Customer</h1>
-    <button @click="redirectToAddCustomer">Add Customer</button>
-    <input type="text" v-model="searchId" placeholder="Search by ID" />
-    <button @click="searchCustomer">Search</button>
+    <h1 class="header">Customer</h1>
+    <div class="controls">
+      <button class="btn add-btn" @click="redirectToAddCustomer">
+        Add Customer
+      </button>
+      <input
+        type="text"
+        v-model="searchId"
+        placeholder="Search by ID"
+        class="search-input"
+      />
+      <button class="btn search-btn" @click="searchCustomer">Search</button>
+    </div>
     <div v-if="searchResult">
       <h2>Search Result</h2>
       <AllCustomer
@@ -16,7 +25,7 @@
       <p>No customer found with ID: {{ searchId }}</p>
     </div>
     <div v-else>
-      <p>This is all customers</p>
+      <p class="subheading">This is all customers</p>
       <div>
         <AllCustomer
           v-for="customer in customers"
@@ -105,4 +114,76 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.header {
+  padding: 40px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+.subheading {
+  text-align: center;
+  font-size: 20px;
+  margin: 2em;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  width: 200px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.add-btn {
+  background-color: #3498db;
+  color: white;
+  margin-right: 10px;
+}
+
+.add-btn:hover {
+  background-color: #2980b9;
+}
+
+.search-btn {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.search-btn:hover {
+  background-color: #27ae60;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+p {
+  text-align: center;
+  color: #999;
+}
+
+div[v-cloak] {
+  display: none;
+}
+</style>

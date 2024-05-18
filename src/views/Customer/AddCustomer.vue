@@ -1,14 +1,20 @@
 <template>
   <div>
-    <h1>Add Customer</h1>
-    <form @submit.prevent="addCustomer">
-      <label>Name:</label>
-      <input type="text" v-model="newCustomer.fullName" />
-      <label>Email:</label>
-      <input type="email" v-model="newCustomer.email" />
-      <label>Phone:</label>
-      <input type="text" v-model="newCustomer.phoneNo" />
-      <button class="btn btn-blue" type="submit">Add Customer</button>
+    <h1 class="header">Add Customer</h1>
+    <form @submit.prevent="addCustomer" class="form-container">
+      <div class="input-container">
+        <label>Name:</label>
+        <input type="text" v-model="newCustomer.fullName" />
+      </div>
+      <div class="input-container">
+        <label>Email:</label>
+        <input type="email" v-model="newCustomer.email" />
+      </div>
+      <div class="input-container">
+        <label>Phone:</label>
+        <input type="text" v-model="newCustomer.phoneNo" />
+      </div>
+      <button class="btn submit-btn" type="submit">Add Customer</button>
     </form>
   </div>
 </template>
@@ -47,7 +53,53 @@ export default {
 </script>
 
 <style scoped>
-.btn-blue {
-  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full;
+.header {
+  padding: 40px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+  margin-bottom: 2%;
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  /* padding-right: 5%; */
+}
+
+.input-container {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-container input {
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  width: calc(100% - 40px);
+  box-sizing: content-box;
+}
+
+.btn.submit-btn {
+  padding: 15px 20px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background-color: #1abc9c;
+  font-size: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 10px;
+}
+
+.btn.submit-btn:hover {
+  background-color: #2980b9;
 }
 </style>
