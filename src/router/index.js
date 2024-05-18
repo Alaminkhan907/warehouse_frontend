@@ -69,6 +69,11 @@ const routes = [
     component: () => import("../views/Supplier/SupplierView.vue"),
   },
   {
+    path: "/AddSupplier",
+    name: "AddSupplier",
+    component: () => import("../views/Supplier/AddSupplier.vue"),
+  },
+  {
     path: "/notification",
     name: "Notification",
     component: () => import("../views/Notification/NotificationView.vue"),

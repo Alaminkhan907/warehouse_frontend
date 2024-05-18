@@ -62,7 +62,7 @@ export default {
             console.log(this.decodedToken.roles);
             localStorage.setItem("jwtToken", this.token);
             console.log(localStorage.getItem("jwtToken"));
-            this.$router.push("/");
+            this.$router.push("/LogIn");
           }
         })
         .catch((e) => {
