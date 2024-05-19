@@ -26,19 +26,18 @@ export default {
         { name: "Inventory", icon: "bxs-bank", href: "/inventory" },
         { name: "Order", icon: "bxs-package", href: "/order" },
         { name: "Customer", icon: "bxs-user", href: "/customer" },
-        { name: "Shipment", icon: "bxs-car", href: "/Shipment" },
+        { name: "Shipment", icon: "bxs-car", href: "/shipment" },
         { name: "Supplier", icon: "bxs-package", href: "/supplier" },
         {
           name: "Notification",
           icon: "bxs-chat",
           href: "/notification",
         },
-
         {
           isFooter: true,
-          tooltip: "Vue.js LinkedIn page",
-          icon: "bxl-linkedin",
-          href: "https://www.linkedin.com/in/alamin-khan-907",
+          tooltip: "Log Out",
+          icon: "bx-log-out",
+          href: "/logout",
         },
       ],
     };

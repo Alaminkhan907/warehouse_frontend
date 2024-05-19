@@ -5,19 +5,27 @@
       <form @submit.prevent="LogIn">
         <div class="input-group">
           <label for="username">User Name</label>
-          <input type="text" name="username" required v-model="username" />
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            v-model="username"
+          />
         </div>
         <div class="input-group">
           <label for="password">Password</label>
-          <input type="password" name="password" required v-model="password" />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            v-model="password"
+          />
         </div>
         <div class="button-group">
           <button type="submit" class="btn btn-login">Log In</button>
-          <button
-            type="button"
-            @click="this.$router.push('/signup')"
-            class="btn btn-signup"
-          >
+          <button type="button" @click="goToSignUp" class="btn btn-signup">
             Sign Up
           </button>
         </div>
@@ -25,7 +33,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import jwt_decode from "jwt-decode";
 
@@ -71,14 +78,13 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5;
+  background: linear-gradient(150deg, #1abc9c 50%, #3498db 50%);
 }
 
 .login-box {
