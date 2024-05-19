@@ -8,14 +8,13 @@
           <input type="text" name="username" required v-model="username" />
         </div>
         <div class="input-group">
-          <label for="password">Password</label>
-          <input type="password" name="password" required v-model="password" />
-        </div>
-        <div class="input-group">
           <label for="email">Email</label>
           <input type="email" name="email" required v-model="email" />
         </div>
-
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" required v-model="password" />
+        </div>
         <div class="input-group">
           <label for="roles">Role</label>
           <input type="text" name="roles" required v-model="roles" />
@@ -33,9 +32,10 @@ import jwt_decode from "jwt-decode";
 
 export default {
   name: "SignUp",
-  data() {
+  data: function () {
     return {
       username: "",
+      email: "",
       password: "",
       roles: "",
       token: "",
@@ -46,11 +46,12 @@ export default {
     async SignUp() {
       var data = {
         name: this.username,
-        password: this.password,
         email: this.email,
+        password: this.password,
         roles: this.roles,
       };
 
+      // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
       await fetch("http://localhost:8090/api/auth/signup", {
         method: "POST",
         headers: {
@@ -61,19 +62,19 @@ export default {
       })
         .then((response) => response.text())
         .then((response) => {
+          //saving the jwt in the token variable
           this.token = response;
           if (this.token.startsWith("ey")) {
+            this.$router.push("/LogIn");
+            //decoding the jwt and save it in the decodedToken variable
             this.decodedToken = jwt_decode(this.token);
+            // saving the returned user role into the roles variable
             this.roles = this.decodedToken.roles;
             console.log(this.decodedToken.roles);
+            // saving the token into the windows local storage
             localStorage.setItem("jwtToken", this.token);
             console.log(localStorage.getItem("jwtToken"));
-            this.$router.push("/LogIn");
           }
-        })
-        .catch((e) => {
-          console.log(e);
-          console.log("error");
         });
     },
   },
@@ -86,7 +87,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5;
+  background: linear-gradient(-150deg, #1abc9c 50%, #3498db 50%);
 }
 
 .login-box {

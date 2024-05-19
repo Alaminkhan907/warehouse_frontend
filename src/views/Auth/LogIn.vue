@@ -25,7 +25,11 @@
         </div>
         <div class="button-group">
           <button type="submit" class="btn btn-login">Log In</button>
-          <button type="button" @click="goToSignUp" class="btn btn-signup">
+          <button
+            type="button"
+            @click="this.$router.push('/signup')"
+            class="btn btn-signup"
+          >
             Sign Up
           </button>
         </div>
@@ -51,7 +55,7 @@ export default {
         password: this.password,
       };
 
-      await fetch("http://localhost:8090/api/auth/login", {
+      await fetch("http://localhost:8090/api/auth/authenticate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,16 +67,13 @@ export default {
         .then((response) => {
           this.token = response;
           if (this.token.startsWith("ey")) {
+            this.$router.push("/Analytics");
             this.decodedToken = jwt_decode(this.token);
             this.roles = this.decodedToken.roles;
             localStorage.setItem("jwtToken", this.token);
             console.log(localStorage.getItem("jwtToken"));
-            this.$router.push("/");
+            // this.$router.push("/Analytics"); //if need to change we can change to others
           }
-        })
-        .catch((e) => {
-          console.log(e);
-          console.log("error");
         });
     },
   },
