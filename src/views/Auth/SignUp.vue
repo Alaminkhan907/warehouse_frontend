@@ -52,7 +52,7 @@ export default {
       };
 
       // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
-      await fetch("http://localhost:8090/api/auth/signup", {
+      await fetch("http://localhost:8089/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

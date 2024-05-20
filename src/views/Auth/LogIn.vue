@@ -55,7 +55,7 @@ export default {
         password: this.password,
       };
 
-      await fetch("http://localhost:8090/api/auth/authenticate", {
+      await fetch("http://localhost:8089/api/auth/authenticate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
