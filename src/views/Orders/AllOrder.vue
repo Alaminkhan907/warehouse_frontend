@@ -11,7 +11,6 @@
           Order Date: {{ order.orderDate }}
         </div>
         <div>Order Status: {{ order.orderStatus }}</div>
-        <div>Shipment Status: {{ order.shipmentStatus }}</div>
       </div>
       <div class="order-actions">
         <button class="btn edit-btn" @click="emitEdit">Edit</button>

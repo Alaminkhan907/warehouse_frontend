@@ -21,7 +21,7 @@
       <p>No order found with ID: {{ searchId }}</p>
     </div>
     <div v-else>
-      <p class="subheading">This is all orders</p>
+      <p class="subheading">All orders</p>
       <div>
         <AllOrder
           v-for="order in orders"
