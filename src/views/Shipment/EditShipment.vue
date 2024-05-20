@@ -34,7 +34,7 @@ export default {
   methods: {
     fetchShipment() {
       const shipmentId = this.$route.params.id;
-      fetch(`http://localhost:8086/api/shipments/${shipmentId}`)
+      fetch(`http://localhost:8089/api/shipments/${shipmentId}`)
         .then((response) => response.json())
         .then((data) => {
           this.shipment = data;
@@ -43,7 +43,7 @@ export default {
     },
     updateShipment() {
       const shipmentId = this.$route.params.id;
-      fetch(`http://localhost:8086/api/shipments/${shipmentId}`, {
+      fetch(`http://localhost:8089/api/shipments/${shipmentId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

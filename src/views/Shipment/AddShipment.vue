@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     addShipment() {
-      fetch(`http://localhost:8086/api/shipments`, {
+      fetch(`http://localhost:8089/api/shipments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

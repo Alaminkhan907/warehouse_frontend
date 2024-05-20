@@ -59,7 +59,7 @@ export default {
   methods: {
     fetchInventory() {
       const inventoryId = this.$route.params.id;
-      fetch(`http://localhost:8084/api/inventory/${inventoryId}`)
+      fetch(`http://localhost:8089/api/inventory/${inventoryId}`)
         .then((response) => response.json())
         .then((data) => {
           this.inventory = data;
@@ -68,7 +68,7 @@ export default {
     },
     updateInventory() {
       const inventoryId = this.$route.params.id;
-      fetch(`http://localhost:8084/api/inventory/${inventoryId}`, {
+      fetch(`http://localhost:8089/api/inventory/${inventoryId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

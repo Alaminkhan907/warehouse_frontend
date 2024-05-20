@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     fetchCustomers() {
-      fetch(`http://localhost:8082/api/customers`)
+      fetch(`http://localhost:8089/api/customers`)
         .then((response) => response.json())
         .then((data) => (this.customers = data))
         .catch((err) => console.log(err.message));
@@ -68,7 +68,7 @@ export default {
     },
     deleteFunction(customerId) {
       console.log("Delete Call on", customerId);
-      fetch(`http://localhost:8082/api/customers/${customerId}`, {
+      fetch(`http://localhost:8089/api/customers/${customerId}`, {
         method: "DELETE",
       })
         .then(() => {
@@ -84,7 +84,7 @@ export default {
     searchCustomer() {
       const customerId = parseInt(this.searchId);
       if (!isNaN(customerId)) {
-        fetch(`http://localhost:8082/api/customers/${customerId}`)
+        fetch(`http://localhost:8089/api/customers/${customerId}`)
           .then((response) => {
             if (response.ok) {
               return response.json();

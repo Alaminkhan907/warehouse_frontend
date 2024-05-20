@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     fetchShipments() {
-      fetch(`http://localhost:8086/api/shipments`)
+      fetch(`http://localhost:8089/api/shipments`)
         .then((response) => response.json())
         .then((data) => (this.shipments = data))
         .catch((err) => console.log(err.message));
@@ -68,7 +68,7 @@ export default {
     },
     deleteShipment(shipmentId) {
       console.log("Delete Shipment Call on", shipmentId);
-      fetch(`http://localhost:8086/api/shipments/${shipmentId}`, {
+      fetch(`http://localhost:8089/api/shipments/${shipmentId}`, {
         method: "DELETE",
       })
         .then(() => {
@@ -84,7 +84,7 @@ export default {
     searchShipment() {
       const shipmentId = parseInt(this.searchId);
       if (!isNaN(shipmentId)) {
-        fetch(`http://localhost:8086/api/shipments/${shipmentId}`)
+        fetch(`http://localhost:8089/api/shipments/${shipmentId}`)
           .then((response) => {
             if (response.ok) {
               return response.json();

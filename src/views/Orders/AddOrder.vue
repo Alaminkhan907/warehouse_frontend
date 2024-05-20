@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     addOrder() {
-      fetch("http://localhost:8085/api/orders", {
+      fetch("http://localhost:8089/api/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

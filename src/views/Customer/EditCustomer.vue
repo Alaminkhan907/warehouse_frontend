@@ -44,7 +44,7 @@ export default {
       console.log("Received customer ID:", customerId);
 
       if (customerId) {
-        fetch(`http://localhost:8082/api/customers/${customerId}`)
+        fetch(`http://localhost:8089/api/customers/${customerId}`)
           .then((response) => response.json())
           .then((data) => {
             this.editedCustomer = data;
@@ -58,7 +58,7 @@ export default {
       const customerId = this.$route.params.id;
 
       if (customerId) {
-        fetch(`http://localhost:8082/api/customers/${customerId}`, {
+        fetch(`http://localhost:8089/api/customers/${customerId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
