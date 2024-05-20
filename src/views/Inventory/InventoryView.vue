@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
 import AllInventory from "./allInventory.vue";
 
 export default {
@@ -57,7 +58,11 @@ export default {
   },
   methods: {
     fetchInventories() {
-      fetch(`http://localhost:8084/api/inventory`)
+      fetch(`http://localhost:8089/api/inventory`, {
+        headers: {
+          Authorization: getAuthToken(),
+        },
+      })
         .then((response) => response.json())
         .then((data) => (this.inventories = data))
         .catch((err) => console.log(err.message));
@@ -68,7 +73,10 @@ export default {
     },
     deleteInventory(inventoryId) {
       console.log("Delete Inventory Call on", inventoryId);
-      fetch(`http://localhost:8084/api/inventory/${inventoryId}`, {
+      fetch(`http://localhost:8089/api/inventory/${inventoryId}`, {
+        headers: {
+          Authorization: getAuthToken(),
+        },
         method: "DELETE",
       })
         .then(() => {
@@ -84,7 +92,11 @@ export default {
     searchInventory() {
       const inventoryId = parseInt(this.searchId);
       if (!isNaN(inventoryId)) {
-        fetch(`http://localhost:8084/api/inventory/${inventoryId}`)
+        fetch(`http://localhost:8089/api/inventory/${inventoryId}`, {
+          headers: {
+            Authorization: getAuthToken(),
+          },
+        })
           .then((response) => {
             if (response.ok) {
               return response.json();

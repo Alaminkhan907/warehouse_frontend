@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
+
 export default {
   name: "AddShipment",
   data() {
@@ -33,10 +35,11 @@ export default {
   },
   methods: {
     addShipment() {
-      fetch(`http://localhost:8086/api/shipments`, {
+      fetch(`http://localhost:8089/api/shipments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: getAuthToken(),
         },
         body: JSON.stringify(this.shipment),
       })

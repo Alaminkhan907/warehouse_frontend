@@ -10,6 +10,7 @@
 <script>
 import AllNotification from "./AllNotification.vue";
 
+import { getAuthToken } from "@/utils";
 export default {
   name: "NotificationView",
   components: {
@@ -22,7 +23,11 @@ export default {
   },
   methods: {
     fetchNotification() {
-      fetch(`http://localhost:8089/api/notifications`)
+      fetch(`http://localhost:8089/api/notifications`, {
+        headers: {
+          Authorization: getAuthToken(),
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           if (data.length > 0) {

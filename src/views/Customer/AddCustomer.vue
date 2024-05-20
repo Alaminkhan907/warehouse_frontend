@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
 export default {
   data() {
     return {
@@ -59,10 +60,11 @@ export default {
   },
   methods: {
     addCustomer() {
-      fetch("http://localhost:8082/api/customers", {
+      fetch("http://localhost:8089/api/customers", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: getAuthToken(),
         },
         body: JSON.stringify(this.newCustomer),
       })

@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
 export default {
   data() {
     const getCurrentDateTime = () => {
@@ -55,10 +56,11 @@ export default {
       // Add the current date and time to the orderDate field
       this.newOrder.orderDate = new Date().toISOString();
 
-      fetch("http://localhost:8085/api/orders", {
+      fetch("http://localhost:8089/api/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: getAuthToken(),
         },
         body: JSON.stringify(this.newOrder),
       }).then((response) => {

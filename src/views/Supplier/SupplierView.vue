@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
 import AllSupplier from "./AllSupplier.vue";
 
 export default {
@@ -57,7 +58,11 @@ export default {
   },
   methods: {
     fetchSuppliers() {
-      fetch(`http://localhost:8083/api/suppliers`)
+      fetch(`http://localhost:8089/api/suppliers`, {
+        headers: {
+          Authorization: getAuthToken(),
+        },
+      })
         .then((response) => response.json())
         .then((data) => (this.suppliers = data))
         .catch((err) => console.log(err.message));
@@ -68,8 +73,11 @@ export default {
     },
     deleteSupplier(supplierId) {
       console.log("Delete Supplier Call on", supplierId);
-      fetch(`http://localhost:8083/api/suppliers/${supplierId}`, {
+      fetch(`http://localhost:8089/api/suppliers/${supplierId}`, {
         method: "DELETE",
+        headers: {
+          Authorization: getAuthToken(),
+        },
       })
         .then(() => {
           this.fetchSuppliers();
@@ -84,7 +92,11 @@ export default {
     searchSupplier() {
       const supplierId = parseInt(this.searchId);
       if (!isNaN(supplierId)) {
-        fetch(`http://localhost:8083/api/suppliers/${supplierId}`)
+        fetch(`http://localhost:8089/api/suppliers/${supplierId}`, {
+          headers: {
+            Authorization: getAuthToken(),
+          },
+        })
           .then((response) => {
             if (response.ok) {
               return response.json();
