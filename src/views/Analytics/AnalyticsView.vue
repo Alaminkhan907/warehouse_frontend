@@ -7,7 +7,7 @@
           <i class="fas fa-box"></i>
         </div>
         <div class="card-content">
-          <h3 class="card-title">Number of Customer</h3>
+          <h3 class="card-title">Number of Customers</h3>
           <p class="card-text">{{ NumberOfCustomers }}</p>
         </div>
       </div>
@@ -16,7 +16,7 @@
           <i class="fas fa-box"></i>
         </div>
         <div class="card-content">
-          <h3 class="card-title">Current Active order</h3>
+          <h3 class="card-title">Current Active orders</h3>
           <p class="card-text">{{ NumberOfOrder }}</p>
         </div>
       </div>
