@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
+
 export default {
   name: "AddShipment",
   data() {
@@ -37,6 +39,7 @@ export default {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: getAuthToken(),
         },
         body: JSON.stringify(this.shipment),
       })

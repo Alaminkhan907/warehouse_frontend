@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
 export default {
   data() {
     return {
@@ -63,6 +64,7 @@ export default {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: getAuthToken(),
         },
         body: JSON.stringify(this.newCustomer),
       })

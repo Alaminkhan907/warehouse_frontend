@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
 import AllOrder from "./AllOrder.vue";
 
 export default {
@@ -53,7 +54,11 @@ export default {
   },
   methods: {
     fetchOrders() {
-      fetch(`http://localhost:8085/api/orders`)
+      fetch(`http://localhost:8085/api/orders`, {
+        headers: {
+          Authorization: getAuthToken(),
+        },
+      })
         .then((response) => response.json())
         .then((data) => (this.orders = data))
         .catch((err) => console.log(err.message));
@@ -66,6 +71,9 @@ export default {
       console.log("Delete Order Call on", orderId);
       fetch(`http://localhost:8085/api/orders/${orderId}`, {
         method: "DELETE",
+        headers: {
+          Authorization: getAuthToken(),
+        },
       })
         .then(() => {
           this.fetchOrders();
@@ -80,7 +88,11 @@ export default {
     searchOrder() {
       const orderId = parseInt(this.searchId);
       if (!isNaN(orderId)) {
-        fetch(`http://localhost:8085/api/orders/${orderId}`)
+        fetch(`http://localhost:8085/api/orders/${orderId}`, {
+          headers: {
+            Authorization: getAuthToken(),
+          },
+        })
           .then((response) => {
             if (response.ok) {
               return response.json();

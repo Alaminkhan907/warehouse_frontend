@@ -42,6 +42,7 @@
 <script>
 import AllShipment from "./AllShipment.vue";
 
+import { getAuthToken } from "@/utils";
 export default {
   name: "ShipmentView",
   components: {
@@ -57,7 +58,11 @@ export default {
   },
   methods: {
     fetchShipments() {
-      fetch(`http://localhost:8086/api/shipments`)
+      fetch(`http://localhost:8086/api/shipments`, {
+        headers: {
+          Authorization: getAuthToken(),
+        },
+      })
         .then((response) => response.json())
         .then((data) => (this.shipments = data))
         .catch((err) => console.log(err.message));
@@ -70,6 +75,9 @@ export default {
       console.log("Delete Shipment Call on", shipmentId);
       fetch(`http://localhost:8086/api/shipments/${shipmentId}`, {
         method: "DELETE",
+        headers: {
+          Authorization: getAuthToken(),
+        },
       })
         .then(() => {
           this.fetchShipments();
@@ -84,7 +92,11 @@ export default {
     searchShipment() {
       const shipmentId = parseInt(this.searchId);
       if (!isNaN(shipmentId)) {
-        fetch(`http://localhost:8086/api/shipments/${shipmentId}`)
+        fetch(`http://localhost:8086/api/shipments/${shipmentId}`, {
+          headers: {
+            Authorization: getAuthToken(),
+          },
+        })
           .then((response) => {
             if (response.ok) {
               return response.json();

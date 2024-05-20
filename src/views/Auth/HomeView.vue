@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
 import auth from "../../auth.js";
 
 export default {
@@ -46,11 +47,12 @@ export default {
   },
   mounted() {
     if (this.checkRoles("ADMIN")) {
-      const token = localStorage.getItem("jwtToken");
       // Set the Authorization header with the token value
       const headers = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        headers: {
+          Authorization: getAuthToken(),
+        },
       };
       fetch("http://localhost:8090/api/auth/admin", { headers })
         .then((response) => response.text())
@@ -61,11 +63,10 @@ export default {
     }
 
     if (this.checkRoles("USER")) {
-      const token = localStorage.getItem("jwtToken");
       // Set the Authorization header with the token value
       const headers = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: getAuthToken(),
       };
       fetch("http://localhost:8090/api/auth/user", { headers })
         .then((response) => response.text())

@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
 import { Chart } from "chart.js/auto";
 
 export default {
@@ -77,7 +78,11 @@ export default {
   },
   methods: {
     fetchNumberOfCustomers() {
-      fetch("http://localhost:8081/api/analytics/customers")
+      fetch("http://localhost:8081/api/analytics/customers", {
+        headers: {
+          Authorization: getAuthToken(),
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -88,7 +93,11 @@ export default {
         );
     },
     fetchNumberOfInventory() {
-      fetch("http://localhost:8081/api/analytics/inventory")
+      fetch("http://localhost:8081/api/analytics/inventory", {
+        headers: {
+          Authorization: getAuthToken(),
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -99,7 +108,11 @@ export default {
         );
     },
     fetchNumberOfOrder() {
-      fetch("http://localhost:8081/api/analytics/orders")
+      fetch("http://localhost:8081/api/analytics/orders", {
+        headers: {
+          Authorization: getAuthToken(),
+        },
+      })
         .then((response) => response.json())
         .then((data) => {
           console.log(data);

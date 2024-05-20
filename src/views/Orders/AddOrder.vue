@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
 export default {
   data() {
     const getCurrentDateTime = () => {
@@ -59,6 +60,7 @@ export default {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: getAuthToken(),
         },
         body: JSON.stringify(this.newOrder),
       }).then((response) => {

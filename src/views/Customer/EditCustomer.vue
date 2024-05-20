@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { getAuthToken } from "@/utils";
 export default {
   data() {
     return {
@@ -69,7 +70,11 @@ export default {
       console.log("Received customer ID:", customerId);
 
       if (customerId) {
-        fetch(`http://localhost:8082/api/customers/${customerId}`)
+        fetch(`http://localhost:8082/api/customers/${customerId}`, {
+          headers: {
+            Authorization: getAuthToken(),
+          },
+        })
           .then((response) => response.json())
           .then((data) => {
             this.editedCustomer = data;
@@ -87,6 +92,7 @@ export default {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            Authorization: getAuthToken(),
           },
           body: JSON.stringify(this.editedCustomer),
         })
