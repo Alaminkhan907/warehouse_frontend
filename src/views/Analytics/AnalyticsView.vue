@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     fetchNumberOfCustomers() {
-      fetch("http://localhost:8081/api/analytics/customers", {
+      fetch("http://localhost:8089/api/analytics/customers", {
         headers: {
           Authorization: getAuthToken(),
         },
@@ -93,7 +93,7 @@ export default {
         );
     },
     fetchNumberOfInventory() {
-      fetch("http://localhost:8081/api/analytics/inventory", {
+      fetch("http://localhost:8089/api/analytics/inventory", {
         headers: {
           Authorization: getAuthToken(),
         },
@@ -108,7 +108,7 @@ export default {
         );
     },
     fetchNumberOfOrder() {
-      fetch("http://localhost:8081/api/analytics/orders", {
+      fetch("http://localhost:8089/api/analytics/orders", {
         headers: {
           Authorization: getAuthToken(),
         },

@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     fetchShipments() {
-      fetch(`http://localhost:8086/api/shipments`, {
+      fetch(`http://localhost:8089/api/shipments`, {
         headers: {
           Authorization: getAuthToken(),
         },
@@ -73,7 +73,7 @@ export default {
     },
     deleteShipment(shipmentId) {
       console.log("Delete Shipment Call on", shipmentId);
-      fetch(`http://localhost:8086/api/shipments/${shipmentId}`, {
+      fetch(`http://localhost:8089/api/shipments/${shipmentId}`, {
         method: "DELETE",
         headers: {
           Authorization: getAuthToken(),
@@ -92,7 +92,7 @@ export default {
     searchShipment() {
       const shipmentId = parseInt(this.searchId);
       if (!isNaN(shipmentId)) {
-        fetch(`http://localhost:8086/api/shipments/${shipmentId}`, {
+        fetch(`http://localhost:8089/api/shipments/${shipmentId}`, {
           headers: {
             Authorization: getAuthToken(),
           },

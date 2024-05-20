@@ -54,7 +54,7 @@ export default {
           Authorization: getAuthToken(),
         },
       };
-      fetch("http://localhost:8090/api/auth/admin", { headers })
+      fetch("http://localhost:8089/api/auth/admin", { headers })
         .then((response) => response.text())
         .then((body) => {
           this.AdminViewContent = body;
@@ -68,7 +68,7 @@ export default {
         "Content-Type": "application/json",
         Authorization: getAuthToken(),
       };
-      fetch("http://localhost:8090/api/auth/user", { headers })
+      fetch("http://localhost:8089/api/auth/user", { headers })
         .then((response) => response.text())
         .then((body) => {
           this.UserViewContent = body;

@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     fetchInventories() {
-      fetch(`http://localhost:8084/api/inventory`, {
+      fetch(`http://localhost:8089/api/inventory`, {
         headers: {
           Authorization: getAuthToken(),
         },
@@ -73,7 +73,7 @@ export default {
     },
     deleteInventory(inventoryId) {
       console.log("Delete Inventory Call on", inventoryId);
-      fetch(`http://localhost:8084/api/inventory/${inventoryId}`, {
+      fetch(`http://localhost:8089/api/inventory/${inventoryId}`, {
         headers: {
           Authorization: getAuthToken(),
         },
@@ -92,7 +92,7 @@ export default {
     searchInventory() {
       const inventoryId = parseInt(this.searchId);
       if (!isNaN(inventoryId)) {
-        fetch(`http://localhost:8084/api/inventory/${inventoryId}`, {
+        fetch(`http://localhost:8089/api/inventory/${inventoryId}`, {
           headers: {
             Authorization: getAuthToken(),
           },

@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     fetchCustomers() {
-      fetch(`http://localhost:8082/api/customers`, {
+      fetch(`http://localhost:8089/api/customers`, {
         headers: {
           Authorization: getAuthToken(),
         },
@@ -73,7 +73,7 @@ export default {
     },
     deleteFunction(customerId) {
       console.log("Delete Call on", customerId);
-      fetch(`http://localhost:8082/api/customers/${customerId}`, {
+      fetch(`http://localhost:8089/api/customers/${customerId}`, {
         headers: {
           Authorization: getAuthToken(),
         },
@@ -92,7 +92,7 @@ export default {
     searchCustomer() {
       const customerId = parseInt(this.searchId);
       if (!isNaN(customerId)) {
-        fetch(`http://localhost:8082/api/customers/${customerId}`, {
+        fetch(`http://localhost:8089/api/customers/${customerId}`, {
           headers: {
             Authorization: getAuthToken(),
           },

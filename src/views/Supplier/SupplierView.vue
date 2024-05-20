@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     fetchSuppliers() {
-      fetch(`http://localhost:8083/api/suppliers`, {
+      fetch(`http://localhost:8089/api/suppliers`, {
         headers: {
           Authorization: getAuthToken(),
         },
@@ -73,7 +73,7 @@ export default {
     },
     deleteSupplier(supplierId) {
       console.log("Delete Supplier Call on", supplierId);
-      fetch(`http://localhost:8083/api/suppliers/${supplierId}`, {
+      fetch(`http://localhost:8089/api/suppliers/${supplierId}`, {
         method: "DELETE",
         headers: {
           Authorization: getAuthToken(),
@@ -92,7 +92,7 @@ export default {
     searchSupplier() {
       const supplierId = parseInt(this.searchId);
       if (!isNaN(supplierId)) {
-        fetch(`http://localhost:8083/api/suppliers/${supplierId}`, {
+        fetch(`http://localhost:8089/api/suppliers/${supplierId}`, {
           headers: {
             Authorization: getAuthToken(),
           },

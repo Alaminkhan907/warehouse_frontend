@@ -29,10 +29,10 @@ export default {
   },
   methods: {
     emitEdit() {
-      this.$emit("edit", this.customer);
+      this.$emit("edit", this.customer.id);
     },
     emitDelete() {
-      this.$emit("delete", this.customer);
+      this.$emit("delete", this.customer.id);
     },
   },
 };

@@ -1,3 +1,3 @@
 export function getAuthToken() {
-  return localStorage.getItem('jwtToken');
+  return `Bearer ${localStorage.getItem('jwtToken')}`;
 }

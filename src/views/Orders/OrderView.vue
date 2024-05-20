@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     fetchOrders() {
-      fetch(`http://localhost:8085/api/orders`, {
+      fetch(`http://localhost:8089/api/orders`, {
         headers: {
           Authorization: getAuthToken(),
         },
@@ -69,7 +69,7 @@ export default {
     },
     deleteOrder(orderId) {
       console.log("Delete Order Call on", orderId);
-      fetch(`http://localhost:8085/api/orders/${orderId}`, {
+      fetch(`http://localhost:8089/api/orders/${orderId}`, {
         method: "DELETE",
         headers: {
           Authorization: getAuthToken(),
@@ -88,7 +88,7 @@ export default {
     searchOrder() {
       const orderId = parseInt(this.searchId);
       if (!isNaN(orderId)) {
-        fetch(`http://localhost:8085/api/orders/${orderId}`, {
+        fetch(`http://localhost:8089/api/orders/${orderId}`, {
           headers: {
             Authorization: getAuthToken(),
           },

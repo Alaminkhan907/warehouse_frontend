@@ -38,7 +38,7 @@
   </div>
 </template>
 <script>
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 export default {
   name: "LogIn",
@@ -50,29 +50,25 @@ export default {
   },
   methods: {
     async LogIn() {
-      var data = {
+      const data = {
         name: this.username,
         password: this.password,
       };
 
-      await fetch("http://localhost:8089/api/auth/authenticate", {
+      await fetch("http://localhost:8089/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
         body: JSON.stringify(data),
       })
         .then((response) => response.text())
-        .then((response) => {
-          this.token = response;
-          if (this.token.startsWith("ey")) {
-            this.$router.push("/Analytics");
-            this.decodedToken = jwt_decode(this.token);
+        .then((token) => {
+          if (token.startsWith("ey")) {
+            this.decodedToken = jwtDecode(token);
             this.roles = this.decodedToken.roles;
-            localStorage.setItem("jwtToken", this.token);
-            console.log(localStorage.getItem("jwtToken"));
-            // this.$router.push("/Analytics"); //if need to change we can change to others
+            localStorage.setItem("jwtToken", token);
+            this.$router.push("/");
           }
         });
     },

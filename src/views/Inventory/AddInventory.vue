@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     addInventory() {
-      fetch("http://localhost:8085/api/inventories", {
+      fetch("http://localhost:8089/api/inventories", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

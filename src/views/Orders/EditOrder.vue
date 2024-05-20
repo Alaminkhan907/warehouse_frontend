@@ -70,7 +70,7 @@ export default {
       console.log("Received order ID:", orderId);
 
       if (orderId) {
-        fetch(`http://localhost:8085/api/orders/${orderId}`, {
+        fetch(`http://localhost:8089/api/orders/${orderId}`, {
           headers: {
             Authorization: getAuthToken(),
           },
@@ -88,7 +88,7 @@ export default {
       const orderId = this.$route.params.id;
 
       if (orderId) {
-        fetch(`http://localhost:8085/api/orders/${orderId}`, {
+        fetch(`http://localhost:8089/api/orders/${orderId}`, {
           method: "PUT",
           headers: {
             Authorization: getAuthToken(),
