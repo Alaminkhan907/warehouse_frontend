@@ -25,7 +25,7 @@
       <p>No customer found with ID: {{ searchId }}</p>
     </div>
     <div v-else>
-      <p class="subheading">This is all customers</p>
+      <p class="subheading">All customers</p>
       <div>
         <AllCustomer
           v-for="customer in customers"

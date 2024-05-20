@@ -14,7 +14,29 @@
         <label>Phone:</label>
         <input type="text" v-model="newCustomer.phoneNo" />
       </div>
-      <button class="btn submit-btn" type="submit">Add Customer</button>
+      <div class="input-container">
+        <label>State:</label>
+        <input type="text" v-model="newCustomer.state" />
+      </div>
+      <div class="input-container">
+        <label>City:</label>
+        <input type="text" v-model="newCustomer.city" />
+      </div>
+      <div class="input-container">
+        <label>Zip:</label>
+        <input type="text" v-model="newCustomer.zip" />
+      </div>
+      <div class="input-container">
+        <label>Street:</label>
+        <input type="text" v-model="newCustomer.street" />
+      </div>
+      <div class="input-container">
+        <label>Country:</label>
+        <input type="text" v-model="newCustomer.country" />
+      </div>
+      <div class="button-container">
+        <button class="btn submit-btn" type="submit">Add Customer</button>
+      </div>
     </form>
   </div>
 </template>
@@ -27,6 +49,11 @@ export default {
         fullName: "",
         email: "",
         phoneNo: "",
+        state: "",
+        city: "",
+        zip: "",
+        street: "",
+        country: "",
       },
     };
   },
@@ -66,16 +93,15 @@ export default {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  /* padding-right: 5%; */
+  gap: 10px;
 }
 
 .input-container {
-  flex: 1;
-  margin-right: 10px;
+  flex: 1 1 calc(50% - 20px);
+  margin-bottom: 10px;
 }
 
 .input-container label {
-  display: block;
   margin-bottom: 5px;
 }
 
@@ -84,19 +110,26 @@ export default {
   border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 15px;
-  width: calc(100% - 40px);
-  box-sizing: content-box;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .btn.submit-btn {
-  padding: 15px 20px;
+  padding: 15px 30px;
   border-radius: 50px;
   border: none;
   cursor: pointer;
   background-color: #1abc9c;
-  font-size: 15px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin-left: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .btn.submit-btn:hover {

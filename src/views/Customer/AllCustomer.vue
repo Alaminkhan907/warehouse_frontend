@@ -5,7 +5,11 @@
         <div>Id: {{ customer.id }}</div>
         <div>Name: {{ customer.fullName }}</div>
         <div>Email: {{ customer.email }}</div>
-        <div>Phone: {{ customer.phoneNo }}</div>
+        <div>State: {{ customer.state }}</div>
+        <div>City: {{ customer.city }}</div>
+        <div>Zip: {{ customer.zip }}</div>
+        <div>Street: {{ customer.street }}</div>
+        <div>Country: {{ customer.country }}</div>
       </div>
       <div class="customer-actions">
         <button class="btn edit-btn" @click="emitEdit">Edit</button>

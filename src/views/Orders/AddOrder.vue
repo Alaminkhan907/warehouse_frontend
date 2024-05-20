@@ -16,22 +16,15 @@
       </div>
       <div class="input-container">
         <label>Price:</label>
-        <input type="number" v-model="newOrder.price" step="0.01" />
+        <input type="number" v-model="newOrder.price" />
       </div>
       <div class="input-container">
         <label>Order Status:</label>
         <select v-model="newOrder.orderStatus">
-          <option value="CREATED">Created</option>
-          <option value="SHIPPED">Shipped</option>
-          <option value="DELIVERED">Delivered</option>
-        </select>
-      </div>
-      <div class="input-container">
-        <label>Shipment Status:</label>
-        <select v-model="newOrder.shipmentStatus">
-          <option value="CREATED">Created</option>
-          <option value="IN_TRANSIT">In Transit</option>
-          <option value="DELIVERED">Delivered</option>
+          <option value="CREATED">CREATED</option>
+          <option value="SHIPPED">CONFIRMED</option>
+          <option value="DELIVERED">COMPLETED</option>
+          <option value="DELIVERED">CANCELED</option>
         </select>
       </div>
       <button class="btn submit-btn" type="submit">Add Order</button>
@@ -42,34 +35,39 @@
 <script>
 export default {
   data() {
+    const getCurrentDateTime = () => {
+      const now = new Date();
+      return now.toISOString();
+    };
     return {
       newOrder: {
         customerId: "",
         inventoryId: "",
         quantity: "",
         price: "",
+        orderDate: getCurrentDateTime,
         orderStatus: "CREATED",
-        shipmentStatus: "CREATED",
       },
     };
   },
   methods: {
     addOrder() {
-      fetch("http://localhost:8089/api/orders", {
+      // Add the current date and time to the orderDate field
+      this.newOrder.orderDate = new Date().toISOString();
+
+      fetch("http://localhost:8085/api/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(this.newOrder),
-      })
-        .then((response) => {
-          if (response.ok) {
-            this.$router.push({ name: "Orders" });
-          } else {
-            console.error("Error adding order:", response.statusText);
-          }
-        })
-        .catch((error) => console.error("Error adding order:", error));
+      }).then((response) => {
+        if (response.ok) {
+          this.$router.push({ name: "Order" });
+        } else {
+          console.error("Error adding order:", response.statusText);
+        }
+      });
     },
   },
 };

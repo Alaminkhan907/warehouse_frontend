@@ -7,8 +7,8 @@
           <i class="fas fa-box"></i>
         </div>
         <div class="card-content">
-          <h3 class="card-title">Number of User</h3>
-          <p class="card-text">237</p>
+          <h3 class="card-title">Number of Customer</h3>
+          <p class="card-text">{{ NumberOfCustomers }}</p>
         </div>
       </div>
       <div class="chart-box custom-card">
@@ -17,7 +17,7 @@
         </div>
         <div class="card-content">
           <h3 class="card-title">Current Active order</h3>
-          <p class="card-text">237</p>
+          <p class="card-text">{{ NumberOfOrder }}</p>
         </div>
       </div>
       <div class="chart-box custom-card">
@@ -25,8 +25,8 @@
           <i class="fas fa-box"> </i>
         </div>
         <div class="card-content">
-          <h3 class="card-title">Number of event (24 H)</h3>
-          <p class="card-text">237</p>
+          <h3 class="card-title">Number Inventory Items</h3>
+          <p class="card-text">{{ NumberOfInventory }}</p>
         </div>
       </div>
 
@@ -62,14 +62,53 @@ export default {
       lineChart1: null,
       lineChart2: null,
       barChart: null,
+      NumberOfCustomers: 0,
+      NumberOfInventory: 0,
+      NumberOfOrder: 0,
     };
   },
   mounted() {
     this.renderLineChart1();
     this.renderLineChart2();
     this.renderBarChart();
+    this.fetchNumberOfCustomers();
+    this.fetchNumberOfInventory();
+    this.fetchNumberOfOrder();
   },
   methods: {
+    fetchNumberOfCustomers() {
+      fetch("http://localhost:8081/api/analytics/customers")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.NumberOfCustomers = data.length;
+        })
+        .catch((error) =>
+          console.error("Error fetching number of customers:", error)
+        );
+    },
+    fetchNumberOfInventory() {
+      fetch("http://localhost:8081/api/analytics/inventory")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.NumberOfInventory = data.length;
+        })
+        .catch((error) =>
+          console.error("Error fetching number of customers:", error)
+        );
+    },
+    fetchNumberOfOrder() {
+      fetch("http://localhost:8081/api/analytics/orders")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.NumberOfOrder = data.length;
+        })
+        .catch((error) =>
+          console.error("Error fetching number of customers:", error)
+        );
+    },
     renderLineChart1() {
       const ctx = this.$refs.lineChart1.getContext("2d");
       this.lineChart1 = new Chart(ctx, {

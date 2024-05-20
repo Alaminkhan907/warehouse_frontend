@@ -14,6 +14,26 @@
         <label>Phone:</label>
         <input type="text" v-model="editedCustomer.phoneNo" />
       </div>
+      <div class="input-container">
+        <label>State:</label>
+        <input type="text" v-model="editedCustomer.state" />
+      </div>
+      <div class="input-container">
+        <label>City:</label>
+        <input type="text" v-model="editedCustomer.city" />
+      </div>
+      <div class="input-container">
+        <label>Zip:</label>
+        <input type="text" v-model="editedCustomer.zip" />
+      </div>
+      <div class="input-container">
+        <label>Street:</label>
+        <input type="text" v-model="editedCustomer.street" />
+      </div>
+      <div class="input-container">
+        <label>Country:</label>
+        <input type="text" v-model="editedCustomer.country" />
+      </div>
       <div class="button-container">
         <button class="btn btn-blue" type="submit">Save Changes</button>
       </div>
@@ -29,6 +49,11 @@ export default {
         fullName: "",
         email: "",
         phoneNo: "",
+        state: "",
+        city: "",
+        zip: "",
+        street: "",
+        country: "",
       },
     };
   },

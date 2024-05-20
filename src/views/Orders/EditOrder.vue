@@ -18,22 +18,20 @@
         <label>Price:</label>
         <input type="number" v-model="editedOrder.price" step="0.01" />
       </div>
+      <!-- <div class="input-container">
+        <label>Order Date:</label>
+        <input type="text" v-model="editedOrder.orderDate" readonly />
+      </div> -->
       <div class="input-container">
         <label>Order Status:</label>
         <select v-model="editedOrder.orderStatus">
-          <option value="CREATED">Created</option>
-          <option value="SHIPPED">Shipped</option>
-          <option value="DELIVERED">Delivered</option>
+          <option value="CREATED">CREATED</option>
+          <option value="SHIPPED">CONFIRMED</option>
+          <option value="DELIVERED">COMPLETED</option>
+          <option value="DELIVERED">CANCELED</option>
         </select>
       </div>
-      <div class="input-container">
-        <label>Shipment Status:</label>
-        <select v-model="editedOrder.shipmentStatus">
-          <option value="CREATED">Created</option>
-          <option value="IN_TRANSIT">In Transit</option>
-          <option value="DELIVERED">Delivered</option>
-        </select>
-      </div>
+
       <div class="button-container">
         <button class="btn btn-blue" type="submit">Save Changes</button>
       </div>
@@ -44,14 +42,18 @@
 <script>
 export default {
   data() {
+    const getCurrentDateTime = () => {
+      const now = new Date();
+      return now.toISOString();
+    };
     return {
       editedOrder: {
         customerId: "",
         inventoryId: "",
         quantity: "",
         price: "",
-        orderStatus: "CREATED",
-        shipmentStatus: "CREATED",
+        orderDate: getCurrentDateTime,
+        orderStatus: "",
       },
     };
   },
