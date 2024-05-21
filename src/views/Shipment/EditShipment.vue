@@ -4,11 +4,16 @@
     <form @submit.prevent="updateShipment">
       <div class="form-group">
         <label for="orderId">Order ID</label>
-        <input type="number" v-model="shipment.orderId" required />
+        <input type="number" v-model="shipment.orderId" required readonly />
       </div>
       <div class="form-group">
-        <label for="status">Status</label>
-        <input type="text" v-model="shipment.status" required />
+        <label>Shipment Status:</label>
+        <select v-model="shipment.shipmentStatus">
+          <option value="CREATED">CREATED</option>
+          <option value="SHIPPED">SHIPPED</option>
+          <option value="DELIVERED">DELIVERED</option>
+          <option value="CANCELED">CANCELED</option>
+        </select>
       </div>
       <div class="form-group">
         <label for="shipDate">Ship Date</label>
