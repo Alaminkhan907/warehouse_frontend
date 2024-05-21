@@ -5,7 +5,7 @@
         <div>Supplier ID: {{ supplier.id }}</div>
         <div>Name: {{ supplier.name }}</div>
         <div>Email: {{ supplier.email }}</div>
-        <div>Phone: {{ supplier.phone }}</div>
+        <div>Phone: {{ supplier.phoneNo }}</div>
         <div>Address: {{ supplier.address }}</div>
       </div>
       <div class="supplier-actions">
