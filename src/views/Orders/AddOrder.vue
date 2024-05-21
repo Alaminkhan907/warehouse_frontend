@@ -22,9 +22,9 @@
         <label>Order Status:</label>
         <select v-model="newOrder.orderStatus">
           <option value="CREATED">CREATED</option>
-          <option value="SHIPPED">CONFIRMED</option>
-          <option value="DELIVERED">COMPLETED</option>
-          <option value="DELIVERED">CANCELED</option>
+          <option value="CONFIRMED">CONFIRMED</option>
+          <option value="COMPLETED">COMPLETED</option>
+          <option value="CANCELED">CANCELED</option>
         </select>
       </div>
       <button class="btn submit-btn" type="submit">Add Order</button>
