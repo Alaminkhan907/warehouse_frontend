@@ -63,14 +63,11 @@ export default {
       })
         .then((response) => {
           if (response.ok) {
+            this.$router.push({ name: "Shipment" });
             return response.json();
           } else {
             throw new Error("Failed to update shipment");
           }
-        })
-        .then((data) => {
-          console.log("Shipment updated:", data);
-          this.$router.push({ name: "ShipmentView" });
         })
         .catch((error) => {
           console.error("Error updating shipment:", error);
