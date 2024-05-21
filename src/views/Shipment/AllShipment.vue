@@ -4,7 +4,8 @@
       <div class="shipment-info">
         <div>Shipment ID: {{ shipment.id }}</div>
         <div>Order ID: {{ shipment.orderId }}</div>
-        <div>Shipment Status: {{ shipment.status }}</div>
+        <div>Shipment Status: {{ shipment.shipmentStatus }}</div>
+        <div>Address: {{ shipment.street }}, {{ shipment.city }}, {{ shipment.state }}, {{ shipment.country }}</div>
         <div v-if="shipment.shipDate !== null">
           Ship Date: {{ shipment.shipDate }}
         </div>
