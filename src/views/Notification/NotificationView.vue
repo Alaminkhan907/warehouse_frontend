@@ -1,16 +1,23 @@
 <template>
   <div>
     <h1 class="header">Notifications</h1>
-    <div v-if="notification">
-      <AllNotification :notification="notification" />
+    <div v-if="notifications && notifications.length">
+      <AllNotification  
+        v-for="notification in notifications"
+        :key="notification.id"
+        :notification="notification" 
+      />
+    </div>
+    <div v-else>
+      No notifications available.
     </div>
   </div>
 </template>
 
 <script>
 import AllNotification from "./AllNotification.vue";
-
 import { getAuthToken } from "@/utils";
+
 export default {
   name: "NotificationView",
   components: {
@@ -18,27 +25,25 @@ export default {
   },
   data() {
     return {
-      notification: null,
+      notifications: [],
     };
   },
   methods: {
-    fetchNotification() {
-      fetch(`http://localhost:8089/api/notifications`, {
+    fetchNotifications() {
+      fetch(`http://localhost:8087/api/notifications`, {
         headers: {
           Authorization: getAuthToken(),
         },
       })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.length > 0) {
-            this.notification = data;
-          }
-        })
-        .catch((err) => console.log(err.message));
+      .then(response => response.json())
+      .then(data => {
+        this.notifications = data;
+      })
+      .catch(err => console.log(err.message));
     },
   },
   mounted() {
-    this.fetchNotification();
+    this.fetchNotifications();
   },
 };
 </script>

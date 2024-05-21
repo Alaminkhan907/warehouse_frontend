@@ -3,7 +3,7 @@
     <div class="notification-details">
       <div class="notification-info">
         <ul>
-          <li>Id:{{ notification.id }}</li>
+          <li>Id: {{ notification.id }}</li>
           <li>Timestamp: {{ notification.timestamp }}</li>
           <li>Priority: {{ notification.priority }}</li>
           <li>Type: {{ notification.type }}</li>
@@ -19,7 +19,13 @@
 
 <script>
 export default {
-  props: ["notification"],
+  name: "AllNotification",
+  props: {
+    notification: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>
 
@@ -53,10 +59,5 @@ export default {
 .notification-info > ul > li {
   padding: 5px 0;
   text-align: left;
-}
-
-.notification-actions {
-  display: flex;
-  gap: 10px;
 }
 </style>
